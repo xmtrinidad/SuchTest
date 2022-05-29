@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-import {MyElement} from '../my-element.js';
+import {MyElement} from '../my-element';
 
 import {fixture, assert} from '@open-wc/testing';
 import {html} from 'lit/static-html.js';
@@ -20,9 +20,14 @@ suite('my-element', () => {
     assert.shadowDom.equal(
       el,
       `
-      <h1>Hello, World!</h1>
-      <button part="button">Click Count: 0</button>
-      <slot></slot>
+      <div class="my-element">
+        <h1>Hello, World!</h1>
+        <button part="button">Click Count: 0</button>
+        <slot></slot>
+      </div>
+      <div class="additional-content">
+        <color-preview></color-preview>
+      </div>
     `
     );
   });
@@ -32,9 +37,14 @@ suite('my-element', () => {
     assert.shadowDom.equal(
       el,
       `
-      <h1>Hello, Test!</h1>
-      <button part="button">Click Count: 0</button>
-      <slot></slot>
+      <div class="my-element">
+        <h1>Hello, Test!</h1>
+        <button part="button">Click Count: 0</button>
+        <slot></slot>
+      </div>
+      <div class="additional-content">
+        <color-preview></color-preview>
+      </div>
     `
     );
   });
@@ -47,9 +57,14 @@ suite('my-element', () => {
     assert.shadowDom.equal(
       el,
       `
-      <h1>Hello, World!</h1>
-      <button part="button">Click Count: 1</button>
-      <slot></slot>
+      <div class="my-element">
+        <h1>Hello, World!</h1>
+        <button part="button">Click Count: 1</button>
+        <slot></slot>
+      </div>
+      <div class="additional-content">
+        <color-preview></color-preview>
+      </div>
     `
     );
   });

@@ -7,6 +7,8 @@
 import {LitElement, html, css} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 
+import './color-preview';
+
 /**
  * An example element.
  *
@@ -39,11 +41,16 @@ export class MyElement extends LitElement {
 
   override render() {
     return html`
-      <h1>${this.sayHello(this.name)}!</h1>
-      <button @click=${this._onClick} part="button">
-        Click Count: ${this.count}
-      </button>
-      <slot></slot>
+      <div class="my-element">
+        <h1>${this.sayHello(this.name)}!</h1>
+        <button @click=${this._onClick} part="button">
+          Click Count: ${this.count}
+        </button>
+        <slot></slot>
+      </div>
+      <div class="additional-content">
+        <color-preview></color-preview>
+      </div>
     `;
   }
 

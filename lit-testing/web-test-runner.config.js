@@ -90,7 +90,7 @@ try {
 
 // https://modern-web.dev/docs/test-runner/cli-and-configuration/
 export default {
-  rootDir: '.',
+  rootDir: './build',
   files: ['./test/**/*_test.js'],
   nodeResolve: {exportConditions: mode === 'dev' ? ['development'] : []},
   preserveSymlinks: true,
