@@ -27,4 +27,26 @@ suite('color-preview', () => {
     `);
   });
 
+  test('renders additional content on hex code submit', async () => {
+    const el = (await fixture(html`<color-preview></color-preview>`)) as ColorPreview;
+    const userColor = '#ffffff'
+    const submitButton = el.shadowRoot!.querySelector('button');
+
+    submitButton?.click();
+    await el.updateComplete;
+
+    assert.shadowDom.equal(
+      el,
+      `
+      <div class="color-preview">
+        <div class="input-container">
+          <label for="hex_input">Add Hex Code:</label>
+          <input type="text" id="hex_input">
+          <button>Submit</button>
+        </div>
+        <div class="hex-preview-box" style="background-color: ${userColor}"></div>
+      </div>
+    `);
+  });
+
 });

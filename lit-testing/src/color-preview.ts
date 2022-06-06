@@ -13,10 +13,16 @@ export class ColorPreview extends LitElement {
      :host {
        display: block;
      }
+
+     .hex-preview-box {
+       margin-top: 12px;
+       width: 75px;
+       height: 75px;
+     }
    `;
 
   @property({ type: String })
-  userColor = '#000000';
+  userColor = '';
 
   override render() {
     return html`
@@ -24,15 +30,17 @@ export class ColorPreview extends LitElement {
       <div class="input-container">
         <label for="hex_input">Add Hex Code:</label>
         <input type="text" id="hex_input">
-        <button>Submit</button>
+        <button @click="${this.onHexcodeSubmit}">Submit</button>
       </div>
+      ${this.userColor === '' ? '' : html`<div style="background-color: ${this.userColor}" id="thing" class="hex-preview-box"></div>`}
     </div>
      `;
   }
 
-  // private _onColorSubmit() {
-  //   console.log('color preview submit works');
-  // }
+  onHexcodeSubmit() {
+    const inputValue = this.shadowRoot?.querySelector('input')?.value;
+    this.userColor = !inputValue || inputValue.trim() === '' ? '' : inputValue;
+  }
 
 }
 
